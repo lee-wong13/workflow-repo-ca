@@ -26,9 +26,7 @@ No environment variables are currently required. The API base URL is set in `js/
 
 ## Scripts
 
-- `npm test` – Runs Vitest in watch mode
-- `npm run prepare` – Installs the Husky Git hooks (runs automatically after `npm install`)
-- `npx vitest run` – Runs all tests once
+- `npm run test` – Runs the Vitest unit tests in watch mode.
 
 ## Git hooks
 
@@ -46,4 +44,3 @@ Tests live next to the code they test as `*.test.js` files. Vitest uses the jsdo
 Current tests:
 
 - `js/utils/userInterface.test.js` – `isActivePath`
-- `js/utils/getUsername.test.js` – `getUsername`

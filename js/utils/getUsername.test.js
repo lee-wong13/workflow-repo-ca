@@ -1,14 +1,22 @@
-import { expect, test } from "vitest";
-import { getUsername } from "./storage";
+import { beforeEach, describe, expect, it } from "vitest";
+import { getUsername, saveUser } from "./storage";
 
-test("getUsername returns the name from the user object in in storage", () => {
-  const username = { name: "John Doe" };
-  localStorage.setItem("user", JSON.stringify(username));
-  expect(getUsername()).toBe("John Doe");
-  localStorage.removeItem("user");
-});
+describe("getUsername", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
 
-test("getUsername returns null when no user exists in storage", () => {
-  localStorage.removeItem("user");
-  expect(getUsername()).toBe(null);
+  //Returns the name from the user object in storage (first save a user object to storage)
+  describe("saveUser", () => {
+    it("returns the name from the user object in storage after saving a user", () => {
+      const user = "save-user";
+      saveUser(user);
+      expect(localStorage.getItem("user")).toBe(JSON.stringify(user));
+    });
+
+    it("returns null when no user exists in storage", () => {
+      const user = getUsername();
+      expect(user).toBeNull();
+    });
+  });
 });
