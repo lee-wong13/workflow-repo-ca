@@ -27,6 +27,7 @@ No environment variables are currently required. The API base URL is set in `js/
 ## Scripts
 
 - `npm run test` – Runs the Vitest unit tests in watch mode.
+- `npm playwright test` - Runs the end-to-end tests
 
 ## Git hooks
 
