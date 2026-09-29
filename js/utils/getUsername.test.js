@@ -2,8 +2,8 @@ import { expect, test } from "vitest";
 import { getUsername } from "./storage";
 
 test("getUsername returns the name from the user object in in storage", () => {
-  const mockUser = { name: "John Doe" };
-  localStorage.setItem("user", JSON.stringify(mockUser));
+  const username = { name: "John Doe" };
+  localStorage.setItem("user", JSON.stringify(username));
   expect(getUsername()).toBe("John Doe");
   localStorage.removeItem("user");
 });
