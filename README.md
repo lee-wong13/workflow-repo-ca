@@ -22,12 +22,15 @@ npm install
 
 ## Environment variables
 
-No environment variables are currently required. The API base URL is set in `js/config.js`.
+Copy `.env.example` to `.env` and set `TEST_USER_EMAIL` and `TEST_USER_PASSWORD` to valid test-account credentials for the login E2E test. The `.env` file is ignored by Git. The API base URL is set in `js/config.js`.
 
 ## Scripts
 
+- `npm run dev` – Builds the CSS and watches for changes.
+- `npm run prepare` – Installs the Git hooks; runs during `npm install`.
 - `npm run test` – Runs the Vitest unit tests in watch mode.
-- `npm playwright test` - Runs the end-to-end tests
+- `npm run test:e2e` – Runs the Playwright end-to-end tests.
+- `npm run start` – Starts the local server used by Playwright.
 
 ## Git hooks
 
