@@ -47,4 +47,7 @@ Tests live next to the code they test as `*.test.js` files. Vitest uses the jsdo
 
 Current tests:
 
-- `js/utils/userInterface.test.js` – `isActivePath`
+- ìsActivePath
+- getUserName
+- login
+- Navigation
