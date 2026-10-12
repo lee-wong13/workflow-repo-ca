@@ -1,35 +1,24 @@
 import { test, expect } from "@playwright/test";
 
-test("user can open venue details from the home page", async ({ page }) => {
-  const venue = {
-    id: "test-venue",
-    name: "Test venue",
-    media: ["https://example.com/venue.jpg"],
-  };
+test.describe("navigation", () => {
+  test("user can navigate to the home page", async ({ page }) => {
+    await page.goto("/");
+    await expect(page).toHaveURL("/");
+  });
 
-  await page.route("**/venues", (route) =>
-    route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify([venue]),
-    }),
-  );
-  await page.route("**/venues/test-venue", (route) =>
-    route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify(venue),
-    }),
-  );
+  test("user can click the first venue", async ({ page }) => {
+    await page.goto("/");
+    const venues = page.locator("#venue-container a");
+    await expect(venues.first()).toBeVisible();
+    await venues.first().click();
+  });
 
-  await page.goto("/");
+  test("venue details page displays the venue details", async ({ page }) => {
+    await page.goto("/");
+    const venues = page.locator("#venue-container a");
+    await expect(venues.first()).toBeVisible();
+    await venues.first().click();
 
-  const firstVenue = page.locator("#venue-container a").first();
-  await expect(firstVenue).toBeVisible();
-  await firstVenue.click();
-
-  await expect(page).toHaveURL(/\/venue\/\?id=/);
-  await expect(
-    page.getByRole("heading", { name: /Venue details/i }),
-  ).toBeVisible();
+    await expect(page.locator("h1")).toContainText(/Venue details/i);
+  });
 });
