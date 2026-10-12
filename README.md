@@ -18,8 +18,6 @@ cd workflow-repo-ca
 npm install
 ```
 
-`npm install` also runs the `prepare` script, which installs the Git hooks.
-
 ## Environment variables
 
 Copy `.env.example` to `.env` and set `TEST_USER_EMAIL` and `TEST_USER_PASSWORD` to valid test-account credentials for the login E2E test. The `.env` file is ignored by Git. The API base URL is set in `js/config.js`.
@@ -27,23 +25,11 @@ Copy `.env.example` to `.env` and set `TEST_USER_EMAIL` and `TEST_USER_PASSWORD`
 ## Scripts
 
 - `npm run dev` – Builds the CSS and watches for changes.
-- `npm run prepare` – Installs the Git hooks; runs during `npm install`.
 - `npm run test` – Runs the Vitest unit tests in watch mode.
 - `npm run test:e2e` – Runs the Playwright end-to-end tests.
 - `npm run start` – Starts the local server used by Playwright.
 
-## Git hooks
-
-A pre-commit hook runs `lint-staged` on staged files:
-
-- `*.js` – formatted with Prettier and linted with `eslint --fix`
-- `*.html` – formatted with Prettier
-
-The commit is stopped if ESLint finds errors it cannot fix.
-
 ## Testing
-
-Tests live next to the code they test as `*.test.js` files. Vitest uses the jsdom environment (see `vitest.config.mjs`), so browser APIs like `localStorage` are available.
 
 Current tests:
 
