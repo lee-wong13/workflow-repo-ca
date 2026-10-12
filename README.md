@@ -27,7 +27,6 @@ Copy `.env.example` to `.env` and set `TEST_USER_EMAIL` and `TEST_USER_PASSWORD`
 - `npm run dev` – Builds the CSS and watches for changes.
 - `npm run test` – Runs the Vitest unit tests in watch mode.
 - `npm run test:e2e` – Runs the Playwright end-to-end tests.
-- `npm run start` – Starts the local server used by Playwright.
 
 ## Testing
 
