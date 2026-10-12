@@ -1,7 +1,7 @@
 import { CONFIG } from "../../config.js";
 
 export async function login(user) {
-  const url = `${CONFIG.apiUrl}auth/login`;
+  const url = `${CONFIG.baseApiUrl}auth/login`;
 
   const options = {
     method: "POST",
@@ -18,5 +18,5 @@ export async function login(user) {
     throw new Error(json.errors?.[0]?.message || "Login failed");
   }
 
-  return json;
+  return json.data;
 }
